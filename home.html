@@ -1,214 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<!-- Establecemos el head de la página -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider de Eventos</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0; /* Color de fondo del body */
-}
-
-.slider {
-    position: relative;
-    display: flex;
-    overflow-x: hidden;
-}
-
-.slide {
-    min-width: 100%;
-    flex: 0 0 auto;
-}
-
-.card {
-    width: 300px;
-    height: 300px; 
-    margin: 0 20px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.image {
-    width: 100%;
-    height: 150px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px 10px 0 0;
-    margin-bottom: 15px;
-    opacity: 0.7; /* Opacidad de la imagen */
-}
-
-.title {
-    color: #fff; /* Títulos blancos */
-    font-size: 24px;
-}
-
-.details {
-    margin-bottom: 15px;
-}
-
-.date, .time {
-    color: #fff;
-}
-
-.attend-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    background-color: #00ff00; /* Cambia el color de fondo del botón según tu preferencia */
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.attend-button:hover {
-    background-color: #00cc00; /* Cambia el color de fondo del botón al pasar el ratón */
-}
-
-.prev-btn,
-.next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-.image1 {
-    background-image: url('https://i.postimg.cc/g0LPr7VR/Designer-3.jpg'); /* URL de la imagen */
-}
-
-.image2 {
-    background-image: url('https://i.postimg.cc/g0LPr7VR/Designer-3.jpg'); /* URL de la imagen */
-}
-
-    </style>
+    <!--  Se establece el titulo -->
+    <title>Mega Events</title>
+    <!-- se enlaza el archivo de estilos -->
+    <link rel="stylesheet" href="assets/css/home.css">
 </head>
-<body>
-    <button class="prev-btn"><</button>
-    <div class="slider">
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-        <!-- Replicamos la card para mostrar múltiples eventos -->
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-
-
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="card  image1">
-                <h2 class="title">Título del Evento 1</h2>
-                <div class="details">
-                    <p class="date">Fecha: 12 de Abril de 2024</p>
-                    <p class="time">Hora: 18:00</p>
-                </div>
-                <button class="attend-button">Asistiré</button>
-            </div>
-        </div>
-        <!-- Puedes añadir más slides si lo necesitas -->
+<nav>
+    <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#events">Eventos</a></li>
+        <li><a href="#reviews">Opiniones</a></li>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#about">Contacto</a></li>
+    </ul>
+</nav>
+<br/>
+<section class="hero-image" id="home">
+    <div class="hero-text">
+        <h1 style="font-size:50px">Mega <br/> Events</h1>
+        <span class="hero-subtext">Crea tu evento Hoy!!</span>
     </div>
-    <button class="next-btn">></button>
-    <script src="script.js"></script>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
+</section>
 
-    function showSlide(n) {
-        slides[currentSlide].style.display = 'none';
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].style.display = 'flex';
+<section class="events" id="events">
+    <div class="slider">
+    </div>
+</section>
+
+<section id="reviews" class="reviews">
+
+    <div class="reviews-main">
+        <h3>¿Que opinan de nosotros?</h3>
+        <button id="prevReviewBtn">&lt;</button>
+
+        <div id="reviews-container">
+
+        </div>
+        <button id="nextReviewBtn">&gt;</button>
+    </div>
+
+</section>
+
+
+<section id="about" class="about">
+
+    <div class="center-main">
+        <h3>¿Que opinan de nosotros?</h3>
+        <p class="about-text"> Somos tu contacto directo <br/>
+        con los asistentes a tus eventos <br/>
+    solo crea tu evento,  <br/>
+    nosotros  hacemos el resto</p>
+    </div>
+
+</section>
+
+<section id="contact" class="contact">
+
+    <div class="center-main contact">
+        <h3>¿Quiqeres contactarnos?</h3>
+        <p class="contact-text">
+        <img width="20px" src="assets/img/social.png"/> +3125678474    <br/>
+
+        <img width="20px" src="assets/img/instagram.png"/> @MegaEvents 
+        </p>
+    </div>
+
+</section>
+
+<section class="contact-container">
+    <div class="container-form">
+        <h1>Solicita mas información</h1>
+        <input type="text">
+        <br/>
+        <br/>
+        <button class="button-form-contact">Enviar</button>
+      </div>
+</section>
+
+<script>
+
+    const reviews = [
+        {
+            "usuario": "@Laura923",
+            "comentario": "Son los mejores tiene todo el aforo mi fiesta de electro",
+            "estrellas": 5
+        },
+        {
+            "usuario": "@Pedro923",
+            "comentario": "Mi boda fue inolvidable, agradecido totalmente",
+            "estrellas": 4
+        }
+        ];
+
+    // Definimos las imagenes de acuerdo al tipo de evento
+    const eventTypeImage = {
+        1: "assets/img/music-park.jpeg",
+        2: "assets/img/wedding.jpeg",
+        3: "assets/img/concert.jpeg"
+    };
+
+    // Simulación de base de datos
+    const eventsData = [
+        {
+            "titulo": "Boda los rodriguez",
+            "fechaHora": "2024-02-02T08:00:00",
+            "type": 2 
+        },
+        {
+            "titulo": "Rock Festival",
+            "fechaHora": "2024-02-05T20:00:00",
+            "type": 3
+        },
+        {
+            "titulo": "Orquesta al parque",
+            "fechaHora": "2024-04-07T10:00:00",
+            "type": 1
+        },
+
+        {
+            "titulo": "Boda los carrasco",
+            "fechaHora": "2024-05-07T10:00:00",
+            "type": 2
+        },
+
+        {
+            "titulo": "Arte al parque",
+            "fechaHora": "2024-07-07T10:00:00",
+            "type": 1
+        },
+    ];
+
+    // Crear slides a partir del json
+    function createSlides() {
+        const slider = document.querySelector('.slider');
+
+        eventsData.forEach(evento => {
+            const slide = document.createElement('div');
+            slide.classList.add('slide');
+
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.backgroundImage = `url(${eventTypeImage[evento.type]})`; // Seleccionar la imagen según el tipo
+
+            const title = document.createElement('h2');
+            title.classList.add('title');
+            title.textContent = evento.titulo;
+
+            const details = document.createElement('div');
+            details.classList.add('details');
+
+            // Crear elemento de fecha y hora
+            const date = document.createElement('p');
+            date.classList.add('date');
+            const fechaHora = new Date(evento.fechaHora);
+            date.textContent = `Fecha: ${fechaHora.toLocaleDateString()} - Hora: ${fechaHora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+
+            const attendButton = document.createElement('button');
+            attendButton.classList.add('attend-button');
+            attendButton.textContent = 'Asistiré';
+            // Agregamos el atributo data con la información del evento
+            attendButton.setAttribute('data-title', evento.titulo);
+            attendButton.setAttribute('data-date', evento.fechaHora);
+
+            details.appendChild(date);
+            card.appendChild(title);
+            card.appendChild(details);
+            card.appendChild(attendButton);
+            slide.appendChild(card);
+            slider.appendChild(slide);
+        });
     }
 
-    function nextSlide() {
-        showSlide(currentSlide + 1);
+    // Llamar a la función para crear los slides
+    createSlides();
+
+    // Evento clic en el botón 'Asistiré'
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('attend-button')) {
+            const title = event.target.getAttribute('data-title');
+
+            // Obtener la fecha y hora del atributo data
+            const dateTime = event.target.getAttribute('data-date');
+            
+            // Convertir la fecha y hora al formato requerido por Google Calendar
+            const [year, month, day, hours, minutes, seconds] = dateTime.split(/[-T:]/);
+            const startDateTime = `${year}${month}${day}T${hours}${minutes}00Z`;
+            const endDateTime = `${year}${month}${day}T${hours}${minutes}00Z`;
+
+            // Construir la URL de Google Calendar
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startDateTime}/${endDateTime}&text=${encodeURIComponent(title)}`;
+
+            // Abrir la URL en una nueva pestaña
+            window.open(googleCalendarUrl, '_blank');
+        }
+    });
+
+
+    const container = document.getElementById('reviews-container');
+
+    reviews.forEach(resenia => {
+      const reseniaDIV = document.createElement('div');
+      reseniaDIV.classList.add('review');
+
+      const usuarioSpan = document.createElement('span');
+      usuarioSpan.textContent = resenia.usuario;
+      usuarioSpan.classList.add('user');
+
+      const comentarioP = document.createElement('p');
+      comentarioP.textContent = resenia.comentario;
+
+      const estrellasDiv = document.createElement('div');
+      estrellasDiv.classList.add('star');
+      for (let i = 0; i < resenia.estrellas; i++) {
+        const estrella = document.createElement('span');
+        estrella.textContent = '★';
+        estrellasDiv.appendChild(estrella);
+      }
+
+      reseniaDIV.appendChild(usuarioSpan);
+      reseniaDIV.appendChild(comentarioP);
+      reseniaDIV.appendChild(estrellasDiv);
+      container.appendChild(reseniaDIV);
+    });
+
+
+const prevReviewBtn = document.getElementById('prevReviewBtn');
+const nextReviewBtn = document.getElementById('nextReviewBtn');
+let currentReviewIndex = 0;
+
+function showReview(index) {
+    const review = reviews[index];
+    if (review) {
+        const reviewDiv = document.createElement('div');
+        reviewDiv.classList.add('review');
+        
+        const userSpan = document.createElement('span');
+        userSpan.textContent = review.usuario;
+        userSpan.classList.add('user');
+        
+        const commentP = document.createElement('p');
+        commentP.textContent = review.comentario;
+        
+        const starsDiv = document.createElement('div');
+        starsDiv.classList.add('star');
+        for (let i = 0; i < review.estrellas; i++) {
+            const star = document.createElement('span');
+            star.textContent = '★';
+            starsDiv.appendChild(star);
+        }
+        
+        reviewDiv.appendChild(userSpan);
+        reviewDiv.appendChild(commentP);
+        reviewDiv.appendChild(starsDiv);
+        container.innerHTML = '';
+        container.appendChild(reviewDiv);
     }
+}
 
-    function prevSlide() {
-        showSlide(currentSlide - 1);
+prevReviewBtn.addEventListener('click', function() {
+    if (currentReviewIndex > 0) {
+        currentReviewIndex--;
+        showReview(currentReviewIndex);
     }
-
-    const prevButton = document.querySelector('.prev-btn');
-    const nextButton = document.querySelector('.next-btn');
-
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-
-    // Mostrar el primer slide al cargar la página
-    showSlide(currentSlide);
 });
 
-        </script>
-</body>
+nextReviewBtn.addEventListener('click', function() {
+    if (currentReviewIndex < reviews.length - 1) {
+        currentReviewIndex++;
+        showReview(currentReviewIndex);
+    }
+});
+
+showReview(currentReviewIndex);
+
+    
+</script>
+
+
 </html>

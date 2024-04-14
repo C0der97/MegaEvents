@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>crear usuario</title>
+  <style>
+    body {
+        background-color: #030527;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 30%;
+}
+
+.new-event-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+
+.btn {
+    font-family: "Oswald", sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: #68f7c4; 
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #1f946b;
+    color:white;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.close-session{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.close-session a{
+  color: white;
+}
+
+.white{
+  color:white;
+}
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td {
+      color:white;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .container-table {
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        width: 70%;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="close-session">
+    <a href="#">Cerrar Sesión</a>
+  </div>
+
+  <br/>
+<div class="main-container">
+  <div class="container">
+
+    <div class="new-event-box">
+      <h2>Crear evento</h2>
+      <form>
+        <div class="input-group">
+          <label for="nameevent">Nombre evento</label>
+          <input type="text" id="nameevent" placeholder="Ingresa nombre del evento">
+        </div>
+        <div class="input-group">
+          <label for="date">Fecha</label>
+          <input type="date" id="date" placeholder="Ingresa la fecha">
+        </div>
+        <div class="input-group">
+          <label for="hour">Hora</label>
+          <input type="time" id="hour" placeholder="Ingresa  la hora">
+        </div>
+        <div class="input-group">
+          <label for="place">Lugar</label>
+          <input type="text" id="place" placeholder="Ingresa lugar">
+        </div>
+        <div class="center">
+            <button type="submit" class="btn">Crear Nuevo Evento</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="container-table">
+    <h2 class="white">Eventos Creados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre Evento</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Lugar</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ejemplo de Evento</td>
+          <td>2024-04-14</td>
+          <td>10:00 AM</td>
+          <td>Ejemplo de Lugar</td>
+          <td>
+            <button class="btn">Editar</button>
+            <button class="btn">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

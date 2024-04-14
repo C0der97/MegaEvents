@@ -13,6 +13,14 @@ body {
     background-color: #030527;
 }
 
+/* Menu fijo estilos */
+
+nav{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+
 
 /* Estilos de lista no ordenada con flex para centrar los elementos  */
 ul {
@@ -142,6 +150,7 @@ ul {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 .attend-button:hover {
@@ -163,7 +172,151 @@ ul {
 }
 
 
+/* Estilos de review */
+
 .reviews{
-    height: 200px;
+    font-family: "Oswald", sans-serif;
+    margin-top: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
     color:white;
+    padding: 30px;
+
 } 
+
+.review {
+    background: rgb(120,105,175);
+    background: linear-gradient(56deg, rgba(120,105,175,1) 0%, rgba(137,94,209,0.5) 35%, rgba(128,84,209,1) 100%);
+    color: white;
+    padding: 10px;
+    border-radius: 0px 50px 0px 80px;
+    margin-bottom: 10px;
+  }
+  .review .user {
+    font-weight: bold;
+  }
+
+  .star{
+    text-align: center;
+  }
+
+  .review .star span {
+    color: rgb(241 255 0)
+  }
+
+  .reviews-main{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+
+
+/* Estilos de botones atras adelante */
+
+#prevReviewBtn{
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#nextReviewBtn{
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+  
+/* Estilos about */
+
+.center-main{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+.about{
+    font-family: "Oswald", sans-serif;
+    margin-top: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color:white;
+    padding: 30px;
+} 
+
+.about-text{
+    margin-left: 10px;
+}
+
+/* Estilos de contacto */
+
+.contact{
+    font-family: "Oswald", sans-serif;
+    margin-top: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color:white;
+    padding: 30px;
+} 
+
+.contact-text{
+    margin-left: 10px;
+}
+
+
+.container-form {
+    background-color: #030524;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+  }
+
+  h1 {
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+  }
+
+
+  .button-form-contact {
+    font-family: "Oswald", sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: #68f7c4; 
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.button-form-contact:hover {
+    background-color: #1f946b;
+    color:white;
+}
+
+
+  .contact-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
