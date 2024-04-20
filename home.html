@@ -103,37 +103,11 @@
         3: "assets/img/concert.jpeg"
     };
 
+   // Verificamos si hay eventos guardados en el localStorage
+   const eventosGuardados = localStorage.getItem('eventos');
+
     // Simulación de base de datos
-    const eventsData = [
-        {
-            "titulo": "Boda los rodriguez",
-            "fechaHora": "2024-02-02T08:00:00",
-            "type": 2 
-        },
-        {
-            "titulo": "Rock Festival",
-            "fechaHora": "2024-02-05T20:00:00",
-            "type": 3
-        },
-        {
-            "titulo": "Orquesta al parque",
-            "fechaHora": "2024-04-07T10:00:00",
-            "type": 1
-        },
-
-        {
-            "titulo": "Boda los carrasco",
-            "fechaHora": "2024-05-07T10:00:00",
-            "type": 2
-        },
-
-        {
-            "titulo": "Arte al parque",
-            "fechaHora": "2024-07-07T10:00:00",
-            "type": 1
-        },
-    ];
-
+    const eventsData = eventosGuardados ? JSON.parse(eventosGuardados) : [];
     // Crear slides a partir del json
     function createSlides() {
         const slider = document.querySelector('.slider');
@@ -157,7 +131,7 @@
             const date = document.createElement('p');
             date.classList.add('date');
             const fechaHora = new Date(evento.fechaHora);
-            date.textContent = `Fecha: ${fechaHora.toLocaleDateString()} - Hora: ${fechaHora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+            date.innerHTML = `Fecha: ${fechaHora.toLocaleDateString()}  <br/> Hora: ${fechaHora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
 
             const attendButton = document.createElement('button');
             attendButton.classList.add('attend-button');
@@ -188,8 +162,8 @@
             
             // Convertir la fecha y hora al formato requerido por Google Calendar
             const [year, month, day, hours, minutes, seconds] = dateTime.split(/[-T:]/);
-            const startDateTime = `${year}${month}${day}T${hours}${minutes}00Z`;
-            const endDateTime = `${year}${month}${day}T${hours}${minutes}00Z`;
+            const startDateTime = `${year}${month}${day}T${hours}${minutes}00`;
+            const endDateTime = `${year}${month}${day}T${hours+62}${minutes}00`;
 
             // Construir la URL de Google Calendar
             const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startDateTime}/${endDateTime}&text=${encodeURIComponent(title)}`;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>crear usuario</title>
+  <title>crear evento</title>
   <style>
     body {
         background-color: #030527;
@@ -71,6 +71,47 @@ input {
     color:white;
 }
 
+
+.btn-cancel {
+    font-family: "Oswald", sans-serif;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #ffffff; 
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+
+
+
+.btn-cancel:hover {
+    background-color: #848484;
+    color:white;
+}
+
+
+
+.btn-delete {
+    font-family: "Oswald", sans-serif;
+    padding: 10px 20px;
+    border: 1px solid #f79191;
+    border-radius: 25px;
+    background-color: #f76868; 
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    background-color: #ae4242;
+    color:white;
+}
 .center{
     display: flex;
     justify-content: center;
@@ -121,16 +162,16 @@ table {
 <body>
 
   <div class="close-session">
-    <a href="#">Cerrar Sesión</a>
+    <a href="#" id="cerrarSesionLink">Cerrar Sesión</a>
   </div>
 
   <br/>
 <div class="main-container">
   <div class="container">
 
-    <div class="new-event-box">
+    <div id="newEventForm" class="new-event-box">
       <h2>Crear evento</h2>
-      <form>
+      <form onsubmit="event.preventDefault(); guardarEvento();">
         <div class="input-group">
           <label for="nameevent">Nombre evento</label>
           <input type="text" id="nameevent" placeholder="Ingresa nombre del evento">
@@ -147,8 +188,50 @@ table {
           <label for="place">Lugar</label>
           <input type="text" id="place" placeholder="Ingresa lugar">
         </div>
+        <div class="input-group">
+          <label for="type">Tipo</label>
+          <select id="type" style="width: 100%; border-radius: 8px; padding: 10px;">
+            <option value="1">Música en el parque</option>
+            <option value="2">Boda</option>
+            <option value="3">Concierto</option>
+        </select>
+        </div>
         <div class="center">
             <button type="submit" class="btn">Crear Nuevo Evento</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="editEventForm" class="new-event-box" style="display: none;">
+      <h2>Editar evento</h2>
+      <form onsubmit="event.preventDefault(); actualizarEvento();">
+        <div class="input-group">
+          <label for="editNameevent">Nombre evento</label>
+          <input type="text" id="editNameevent" placeholder="Ingresa nombre del evento">
+        </div>
+        <div class="input-group">
+          <label for="editDate">Fecha</label>
+          <input type="date" id="editDate" placeholder="Ingresa la fecha">
+        </div>
+        <div class="input-group">
+          <label for="editHour">Hora</label>
+          <input type="time" id="editHour" placeholder="Ingresa  la hora">
+        </div>
+        <div class="input-group">
+          <label for="editPlace">Lugar</label>
+          <input type="text" id="editPlace" placeholder="Ingresa lugar">
+        </div>
+        <div class="input-group">
+          <label for="editType">Tipo</label>
+          <select id="editType" style="width: 100%; border-radius: 8px; padding: 10px;">
+            <option value="1">Música en el parque</option>
+            <option value="2">Boda</option>
+            <option value="3">Concierto</option>
+          </select>
+        </div>
+        <div class="center">
+          <button type="submit" class="btn">Actualizar Evento</button>
+          <button type="button" class="btn btn-cancel" style="margin-left: 5px;" onclick="cancelarEdicion()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -168,21 +251,167 @@ table {
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Ejemplo de Evento</td>
-          <td>2024-04-14</td>
-          <td>10:00 AM</td>
-          <td>Ejemplo de Lugar</td>
-          <td>
-            <button class="btn">Editar</button>
-            <button class="btn">Borrar</button>
-          </td>
-        </tr>
+      <tbody id="eventsList">
       </tbody>
     </table>
   </div>
 </div>
+
+
+<script>
+
+    // Función para cerrar la sesión
+    function cerrarSesion() {
+    // Asignar localStorage
+    localStorage.setItem('sessionStarted', false);
+    // Redireccionar a home.html
+    window.location.href = 'home.html';
+  }
+
+  // Obtener el enlace
+  const cerrarSesionLink = document.getElementById('cerrarSesionLink');
+
+  // Asignar la función cerrarSesion al evento click del enlace
+  cerrarSesionLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+    cerrarSesion(); // Llamar a la función cerrarSesion
+  });
+
+  function beforeDOMLoad() {
+      var session = localStorage.getItem('sessionStarted');
+      if(session != "true"){
+        alert("No tiene una sesión valida");
+        window.location.href = 'home.html';
+      }
+    }
+
+    beforeDOMLoad();
+
+  // Función para guardar un evento en localStorage
+  function guardarEvento() {
+    const nombreEvento = document.getElementById('nameevent').value;
+    const fecha = document.getElementById('date').value;
+    const hora = document.getElementById('hour').value;
+    const lugar = document.getElementById('place').value;
+    const tipo = document.getElementById('type').value;
+
+    // Creamos un objeto evento con los datos
+    const evento = {
+      titulo: nombreEvento,
+      fechaHora: `${fecha}T${hora}`,
+      type: parseInt(tipo),
+      lugar: lugar
+    };
+
+    // Obtenemos el array de eventos guardados en localStorage
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+
+    // Agregamos el nuevo evento al array
+    eventos.push(evento);
+
+    // Guardamos el array de eventos actualizado en localStorage
+    localStorage.setItem('eventos', JSON.stringify(eventos));
+
+    // Limpiamos los campos del formulario
+    document.getElementById('nameevent').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('hour').value = '';
+    document.getElementById('place').value = '';
+    document.getElementById('type').value = '1';
+
+    // Refrescamos la tabla
+    mostrarEventos();
+  }
+
+  // Función para mostrar los eventos en la tabla
+  function mostrarEventos() {
+    const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+
+    const tbody = document.getElementById('eventsList');
+    tbody.innerHTML = '';
+
+    eventos.forEach((evento, index) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${evento.titulo}</td>
+        <td>${new Date(evento.fechaHora).toLocaleDateString()}</td>
+        <td>${new Date(evento.fechaHora).toLocaleTimeString()}</td>
+        <td>${evento.lugar}</td>
+        <td>
+          <button class="btn" onclick="editarEvento(${index})">Editar</button>
+          <button class="btn btn-delete" onclick="borrarEvento(${index})">Borrar</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Función para editar un evento
+  function editarEvento(index) {
+  const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+  const evento = eventos[index];
+
+  document.getElementById('editNameevent').value = evento.titulo;
+  document.getElementById('editDate').value = evento.fechaHora.split('T')[0];
+  document.getElementById('editHour').value = evento.fechaHora.split('T')[1];
+  document.getElementById('editPlace').value = evento.lugar;
+  document.getElementById('editType').value = evento.type;
+
+  // Mostramos el formulario de edición y ocultamos el de creación
+  document.getElementById('editEventForm').style.display = 'block';
+  document.getElementById('newEventForm').style.display = 'none';
+
+  // Almacenamos el índice del evento que se está editando para usarlo al actualizar
+  document.getElementById('editEventForm').dataset.index = index;
+}
+
+function cancelarEdicion() {
+  document.getElementById('editEventForm').style.display = 'none';
+  document.getElementById('newEventForm').style.display = 'block';
+}
+
+function actualizarEvento() {
+  const index = parseInt(document.getElementById('editEventForm').dataset.index);
+  const nombreEvento = document.getElementById('editNameevent').value;
+  const fecha = document.getElementById('editDate').value;
+  const hora = document.getElementById('editHour').value;
+  const lugar = document.getElementById('editPlace').value;
+  const tipo = document.getElementById('editType').value;
+
+  const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+  eventos[index] = {
+    titulo: nombreEvento,
+    fechaHora: `${fecha}T${hora}`,
+    type: parseInt(tipo),
+    lugar: lugar
+  };
+
+  localStorage.setItem('eventos', JSON.stringify(eventos));
+
+  mostrarEventos();
+  cancelarEdicion();
+}
+
+
+  // Función para borrar un evento
+  function borrarEvento(index) {
+    // Obtenemos el array de eventos guardados en localStorage
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+
+    // Borramos el evento con el índice especificado
+    eventos.splice(index, 1);
+
+    // Guardamos el array de eventos actualizado en localStorage
+    localStorage.setItem('eventos', JSON.stringify(eventos));
+
+    // Refrescamos la tabla
+    mostrarEventos();
+  }
+
+  // Mostramos los eventos al cargar la página
+  mostrarEventos();
+</script>
+
 
 </body>
 </html>

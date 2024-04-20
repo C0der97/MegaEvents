@@ -92,7 +92,7 @@ input {
 <body>
 
   <div class="close-session">
-    <a href="#">Cerrar Sesión</a>
+    <a href="#" id="cerrarSesionLink">Cerrar Sesión</a>
   </div>
 
   <br/>
@@ -101,7 +101,7 @@ input {
 
     <div class="new-user-box">
       <h2>Crear usuario</h2>
-      <form>
+      <form id="userForm">
         <div class="input-group">
           <label for="name">Nombre</label>
           <input type="text" id="name" placeholder="Ingresa tu correo">
@@ -116,7 +116,7 @@ input {
         </div>
         <div class="input-group">
           <label for="password">Repetir contraseña</label>
-          <input type="password" id="password" placeholder="Ingresa tu contraseña">
+          <input type="password" id="confirmPassword" placeholder="Ingresa tu contraseña">
         </div>
         <div class="center">
             <button type="submit" class="btn">Crear Nuevo Usuario</button>
@@ -126,5 +126,77 @@ input {
   </div>
 </div>
 
+
+<script>
+  const userForm = document.getElementById('userForm');
+
+    function beforeDOMLoad() {
+      var session = localStorage.getItem('sessionStarted');
+
+
+      if(session != "true"){
+        alert("No tiene una sesión valida");
+        window.location.href = 'home.html';
+      }
+    }
+
+    beforeDOMLoad();
+
+
+      // Función para cerrar la sesión
+  function cerrarSesion() {
+    // Asignar localStorage
+    localStorage.setItem('sessionStarted', false);
+    // Redireccionar a home.html
+    window.location.href = 'home.html';
+  }
+
+  // Obtener el enlace
+  const cerrarSesionLink = document.getElementById('cerrarSesionLink');
+
+  // Asignar la función cerrarSesion al evento click del enlace
+  cerrarSesionLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+    cerrarSesion(); // Llamar a la función cerrarSesion
+  });
+
+  userForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Obtener los valores del formulario
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Verificar si las contraseñas coinciden
+      if (password !== confirmPassword) {
+          alert('Las contraseñas no coinciden');
+          return;
+      }
+
+      // Crear objeto usuario
+      const newUser = {
+          name: name,
+          email: email,
+          password: password
+      };
+
+      // Obtener usuarios del localStorage
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Agregar nuevo usuario
+      users.push(newUser);
+
+      // Guardar usuarios en el localStorage
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Limpiar formulario
+      userForm.reset();
+
+      // Informar al usuario
+      alert('Usuario creado exitosamente');
+  });
+</script>
 </body>
 </html>
